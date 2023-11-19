@@ -1,8 +1,34 @@
+// global variables 
+var dayLabel =$('#currentDay');
+var saveBtn = $('.saveBtn');
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
-  // TODO: Add a listener for click events on the save button. This code should
+  // local variables
+  var currentHour = dayjs().hour();
+  var timeBlock = $('.time-block');
+  timeBlock.each(function () {
+    var idValue = $(this).attr('id')
+    //  if hour < block id, past color will be applied
+    if (idValue < currentHour) {
+      $(this).children('.description').attr('class', 'col col-md-10 description past')
+      // if hour >  block id, Future color will be applied
+    } else if (idValue > currentHour) {
+      $(this).children('.description').attr('class', 'col col-md-10 description past')
+      //  if not < or >, present color will be applied
+    } else {
+      $(this).children('.description').attr('class', 'col col-md-10 description present')
+    }
+  });
+
+//  Add a listener for click events on the save button. 
+
+saveBtn.on('click', function () {
+  
+})
+
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
