@@ -21,15 +21,6 @@ ill be using use the [Day.js](https://day.js.org/en/) library to work with date 
 - JavaScript
 
 ## Usage
--  vist website 
-
-<!-- @TODO: create ticket to review/update image) -->
-![A user clicks on slots on the color-coded calendar and edits the events.](./Assets/05-third-party-apis-homework-demo.gif)
-
-
-* The URL of the deployed application
-
-* The URL of the GitHub repository, with a unique name and a README describing the project
-
-- - -
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+-  Vist [GitHub Repo](https://jif945.github.io/Workday-Schedule/)
+- User clicks on slots on the color-coded calendar and edits the events.
+![Scheduler](./Assets/screenshot.png)
