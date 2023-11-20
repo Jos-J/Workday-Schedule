@@ -8,7 +8,7 @@ ill be using use the [Day.js](https://day.js.org/en/) library to work with date 
 
 ## Table of Contents 
 
-- [Descrption](#description)
+- [Description](#description)
 - [Languages](#languages)
 - [Usage](#usage)
 
