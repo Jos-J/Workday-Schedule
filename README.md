@@ -21,6 +21,6 @@ ill be using use the [Day.js](https://day.js.org/en/) library to work with date 
 - JavaScript
 
 ## Usage
--  Vist [GitHub Repo](https://jif945.github.io/Workday-Schedule/)
+-  Click to use --> [Workday-Scheduler](https://jos-j.github.io/Workday-Schedule/)
 - User clicks on slots on the color-coded calendar and edits the events.
 ![Scheduler](./Assets/screenshot.png)
