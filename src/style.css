@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+header {
+  display: flex;
+}
 
 body {
   font-family: 'Open Sans', sans-serif;
@@ -50,13 +53,15 @@ textarea {
   color: white;
 }
 
-.saveBtn {
+.nav-buttons button, .view-buttons button {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #23483c;
+  background-color: #482348;
   color: #e7f3ef;
+  padding: 10px;
 }
+
 
 .saveBtn i:hover {
   font-size: 20px;
