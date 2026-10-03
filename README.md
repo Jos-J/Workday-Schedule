@@ -17,7 +17,7 @@ ill be using use the [Day.js](https://day.js.org/en/) library to work with date 
 
 - ![HTML](https://img.shields.io/badge/HTML-grey.svg)
 - ![CSS](https://img.shields.io/badge/CSS-grey.svg)
-- ![Javascript](https://img.shields.io/badge/Javascript-grey.svg)
+- ![TypeScript](https://img.shields.io/badge/TypeScript-grey.svg)
 
 ## Usage
 -  Click to use --> [Workday-Scheduler](https://jos-j.github.io/Workday-Schedule/)
