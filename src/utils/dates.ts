@@ -1,3 +1,5 @@
+// What does this new function actually need to accomplish.
+
 export function todayDate(): Date {
     const now = new Date();
     return now
@@ -85,3 +87,65 @@ export function startOfWeek(
 
     return firstDayOfWeek;
 }
+
+export function endOfWeek(
+    endDay: Date
+): Date {
+    const lastDayOfWeek = new Date(endDay);
+    const lastDay = lastDayOfWeek.getDay()
+    const daysUntilSaturday = 6 -lastDay;
+    const endDate = lastDayOfWeek.getDate() + daysUntilSaturday;
+
+    lastDayOfWeek.setDate(endDate);
+
+    return lastDayOfWeek;
+}
+
+export function startOfMonth(
+    startMonth: Date
+): Date {
+    const firstDayOfMonth = new Date(startMonth);
+    firstDayOfMonth.setDate(1)
+
+    return firstDayOfMonth;
+}
+
+export function daysInMonth(
+    month: Date,
+): number {
+    const nextMonth = new Date(month);
+    const addMonth = nextMonth.getMonth() + 1;
+
+    nextMonth.setMonth(addMonth);
+    nextMonth.setDate(0);
+
+    return nextMonth.getDate();
+}
+
+export function compareDates(
+    firstDay: Date,
+    secondDay: Date
+): boolean {
+    return(
+    firstDay.getMonth() === secondDay.getMonth() &&
+    firstDay.getDate() === secondDay.getDate() &&
+    firstDay.getFullYear() === secondDay.getFullYear()
+    )
+} 
+
+export function formatDate(
+    date: Date,
+): string {
+     const options: Intl.DateTimeFormatOptions = {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+
+    };
+
+    const formatedDate = date.toLocaleDateString("en-us", options);
+
+    return formatedDate
+}
+
