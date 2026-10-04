@@ -93,7 +93,7 @@ export function endOfWeek(
 ): Date {
     const lastDayOfWeek = new Date(endDay);
     const lastDay = lastDayOfWeek.getDay()
-    const daysUntilSaturday = 6 -lastDay;
+    const daysUntilSaturday = 6 - lastDay;
     const endDate = lastDayOfWeek.getDate() + daysUntilSaturday;
 
     lastDayOfWeek.setDate(endDate);
@@ -126,22 +126,21 @@ export function compareDates(
     firstDay: Date,
     secondDay: Date
 ): boolean {
-    return(
-    firstDay.getMonth() === secondDay.getMonth() &&
-    firstDay.getDate() === secondDay.getDate() &&
-    firstDay.getFullYear() === secondDay.getFullYear()
+    return (
+        firstDay.getMonth() === secondDay.getMonth() &&
+        firstDay.getDate() === secondDay.getDate() &&
+        firstDay.getFullYear() === secondDay.getFullYear()
     )
-} 
+}
 
 export function formatDate(
     date: Date,
 ): string {
-     const options: Intl.DateTimeFormatOptions = {
+    const options: Intl.DateTimeFormatOptions = {
         weekday: "long",
         month: "long",
         day: "numeric",
         year: "numeric",
-
     };
 
     const formatedDate = date.toLocaleDateString("en-us", options);
@@ -149,3 +148,27 @@ export function formatDate(
     return formatedDate
 }
 
+export function generateDatesForWeek(
+    date: Date
+): Date[] {
+    const weekStart = startOfWeek(date);
+    const weekDates: Date[] = [];
+    for (let i = 0; i < 7; i++) {
+        weekDates.push(addDays(weekStart, i));
+    }
+    return weekDates;
+
+}
+
+export function datesForGrid(
+    date: Date,
+): Date[] {
+    const monthStart = startOfMonth(date);
+    const firstDayOfWeek = startOfWeek(monthStart);
+    const monthDates: Date[] = [];
+    for (let i = 0; i < 42; i++) {
+        monthDates.push(addDays(firstDayOfWeek, i));
+    }
+
+    return monthDates;
+}
