@@ -1,6 +1,6 @@
 
 import type { SchedulerState, CalendarView } from "./types/calendar";
-import { addDays, addMonths, addWeeks, formatDate, subtractDays, subtractMonths, subtractWeeks, todayDate } from "./utils/dates";
+import { addDays, addMonths, addWeeks, endOfWeek, formatDate, startOfMonth, startOfWeek, subtractDays, subtractMonths, subtractWeeks, todayDate } from "./utils/dates";
 
 
 const schedulerState: SchedulerState = {
@@ -14,12 +14,12 @@ function changeCurrentView(
     view: CalendarView
 ): void {
     schedulerState.currentView = view;
-     updateCalendarTitle()
+    updateCalendarTitle()
 }
 
 
 
-function goToPrevious() {
+function goToPrevious(): void {
     if (schedulerState.currentView === "day") {
         schedulerState.currentDate = subtractDays(schedulerState.currentDate, 1);
     } else if (schedulerState.currentView === "week") {
@@ -34,7 +34,7 @@ function goToToday(): void {
     updateCalendarTitle()
 }
 
-function goToNext() {
+function goToNext(): void {
     if (schedulerState.currentView === "day") {
         schedulerState.currentDate = addDays(schedulerState.currentDate, 1);
     } else if (schedulerState.currentView === "week") {
@@ -44,12 +44,28 @@ function goToNext() {
     } updateCalendarTitle()
 }
 function updateCalendarTitle(): void {
-    const calendarTitle = document.querySelector("#calenderTitle");
+    const calendarTitle = document.querySelector("#calendarTitle");
     if (calendarTitle) {
-        calendarTitle.textContent = formatDate(schedulerState.currentDate)
-    }
+        if (schedulerState.currentView === "day") {
+            calendarTitle.textContent = formatDate(schedulerState.currentDate)
+        } else if (schedulerState.currentView === "week") {
+            const weekStart = startOfWeek(schedulerState.currentDate)
+            const weekEnd = endOfWeek(schedulerState.currentDate)
+            const formattedStart = formatDate(weekStart)
+            const formattedEnd = formatDate(weekEnd)
+            calendarTitle.textContent = `${formattedStart} - ${formattedEnd}`;
+        } else if (schedulerState.currentView === "month") {
+            const monthStart = startOfMonth(schedulerState.currentDate)
+            calendarTitle.textContent = monthStart.toLocaleDateString("en-US", {
+                month: "long",
+                year: "numeric"
 
+            });
+        }
+    }
 }
+
+
 
 // button event listeners
 const todayButton = document.querySelector("#todayBtn")
@@ -78,4 +94,4 @@ viewButtons.forEach((button) => {
     });
 });
 
- updateCalendarTitle()
+updateCalendarTitle()
