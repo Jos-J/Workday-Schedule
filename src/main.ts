@@ -1,11 +1,11 @@
 
 import type { SchedulerState, CalendarView } from "./types/calendar";
-import { addDays, addMonths, addWeeks, endOfWeek, formatDate, startOfMonth, startOfWeek, subtractDays, subtractMonths, subtractWeeks, todayDate } from "./utils/dates";
+import { addDays, addMonths, addWeeks, endOfWeek, formatDate, startOfMonth, startOfWeek, subtractDays, subtractMonths, subtractWeeks, todayDate, datesForGrid, compareDates } from "./utils/dates";
 
 
 const schedulerState: SchedulerState = {
     currentDate: todayDate(),
-    currentView: "week",
+    currentView: "month",
     events: []
 }
 
@@ -15,6 +15,7 @@ function changeCurrentView(
 ): void {
     schedulerState.currentView = view;
     updateCalendarTitle()
+    renderCalendar()
 }
 
 
@@ -27,11 +28,13 @@ function goToPrevious(): void {
     } else if (schedulerState.currentView === "month") {
         schedulerState.currentDate = subtractMonths(schedulerState.currentDate, 1)
     } updateCalendarTitle()
+    renderCalendar()
 }
 
 function goToToday(): void {
     schedulerState.currentDate = todayDate()
     updateCalendarTitle()
+    renderCalendar()
 }
 
 function goToNext(): void {
@@ -42,6 +45,7 @@ function goToNext(): void {
     } else if (schedulerState.currentView === "month") {
         schedulerState.currentDate = addMonths(schedulerState.currentDate, 1)
     } updateCalendarTitle()
+    renderCalendar()
 }
 function updateCalendarTitle(): void {
     const calendarTitle = document.querySelector("#calendarTitle");
@@ -65,6 +69,45 @@ function updateCalendarTitle(): void {
     }
 }
 
+function renderCalendar(): void {
+    const calendarContainer = document.querySelector("#calendar")
+    if (calendarContainer) {
+        calendarContainer.innerHTML = "";
+        calendarContainer.classList.add("month-grid");
+        if (schedulerState.currentView === "month") {
+            const calendarDates = datesForGrid(schedulerState.currentDate);
+            const weekdays = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"]
+            weekdays.forEach((day) => {
+
+                const dayHeader = document.createElement("div")
+                dayHeader.classList.add("week-day")
+                dayHeader.textContent = (day)
+                calendarContainer.appendChild(dayHeader)
+
+            });
+            calendarDates.forEach((date) => {
+                const dayElement = document.createElement("div");
+
+                if(compareDates(date, schedulerState.currentDate)) {
+                    dayElement.classList.add("selected-day")
+                }
+
+                if (compareDates(date, todayDate())) {
+                    dayElement.classList.add("today");
+                }
+
+                dayElement.classList.add("calendar-day")
+                dayElement.textContent = String(date.getDate())
+
+                if (date.getMonth() !== schedulerState.currentDate.getMonth()) {
+                    dayElement.classList.add("outside-month")
+                }
+
+                calendarContainer.appendChild(dayElement)
+            });
+        }
+    }
+}
 
 
 // button event listeners
@@ -95,3 +138,4 @@ viewButtons.forEach((button) => {
 });
 
 updateCalendarTitle()
+renderCalendar()

@@ -68,6 +68,28 @@ textarea {
   transition: all 0.3s ease-in-out;
   color: purple;
 }
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.calendar-day {
+  min-height: 100px;
+  border: 1px solid #ccc;
+}
+.outside-month {
+  background-color: silver;
+}
+.week-day {
+  text-align: center;
+}
+.today {
+  background-color: #0f3319;
+  color: #ccc;
+}
+.selected-day {
+  border: 5px solid  lawngreen;
+}
+
 footer {
   padding: 10px;
   background-color: #E7F3Ef;
