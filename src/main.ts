@@ -1,6 +1,6 @@
 
 import type { SchedulerState, CalendarView } from "./types/calendar";
-import { addDays, addMonths, addWeeks, endOfWeek, formatDate, startOfMonth, startOfWeek, subtractDays, subtractMonths, subtractWeeks, todayDate, datesForGrid, compareDates } from "./utils/dates";
+import { addDays, addMonths, addWeeks, endOfWeek, formatDate, startOfMonth, startOfWeek, subtractDays, subtractMonths, subtractWeeks, todayDate,} from "./utils/dates";
 import { renderMonthView } from "./views/monthView";
 
 
