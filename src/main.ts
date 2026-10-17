@@ -1,6 +1,7 @@
 
 import type { SchedulerState, CalendarView } from "./types/calendar";
 import { addDays, addMonths, addWeeks, endOfWeek, formatDate, startOfMonth, startOfWeek, subtractDays, subtractMonths, subtractWeeks, todayDate, datesForGrid, compareDates } from "./utils/dates";
+import { renderMonthView } from "./views/monthView";
 
 
 const schedulerState: SchedulerState = {
@@ -75,40 +76,19 @@ function renderCalendar(): void {
         calendarContainer.innerHTML = "";
         calendarContainer.classList.add("month-grid");
         if (schedulerState.currentView === "month") {
-            const calendarDates = datesForGrid(schedulerState.currentDate);
-            const weekdays = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"]
-            weekdays.forEach((day) => {
+            renderMonthView(
+                (date: Date) => {
+                    schedulerState.currentDate = date;
+                    updateCalendarTitle();
+                    renderCalendar();
+                },
+                calendarContainer,
+                schedulerState.currentDate
+            );
 
-                const dayHeader = document.createElement("div")
-                dayHeader.classList.add("week-day")
-                dayHeader.textContent = (day)
-                calendarContainer.appendChild(dayHeader)
-
-            });
-            calendarDates.forEach((date) => {
-                const dayElement = document.createElement("div");
-
-                if(compareDates(date, schedulerState.currentDate)) {
-                    dayElement.classList.add("selected-day")
-                }
-
-                if (compareDates(date, todayDate())) {
-                    dayElement.classList.add("today");
-                }
-
-                dayElement.classList.add("calendar-day")
-                dayElement.textContent = String(date.getDate())
-
-                if (date.getMonth() !== schedulerState.currentDate.getMonth()) {
-                    dayElement.classList.add("outside-month")
-                }
-
-                calendarContainer.appendChild(dayElement)
-            });
         }
     }
 }
-
 
 // button event listeners
 const todayButton = document.querySelector("#todayBtn")
@@ -139,3 +119,6 @@ viewButtons.forEach((button) => {
 
 updateCalendarTitle()
 renderCalendar()
+
+
+

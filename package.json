@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "css": "^3.0.0",
+    "tailwind": "^4.0.0",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
@@ -9,7 +11,7 @@
   },
   "name": "workday-scheduler",
   "version": "1.0.0",
-   "type": "module",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
