@@ -68,10 +68,15 @@ textarea {
   transition: all 0.3s ease-in-out;
   color: purple;
 }
-.month-grid {
+.month-grid,
+.week-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  
+}
+.week-date{
+  border: #3b4d46;
+  padding: 100px;
+  margin: 20px;
 }
 .calendar-day {
   min-height: 100px;

@@ -1,7 +1,8 @@
 
 import type { SchedulerState, CalendarView } from "./types/calendar";
-import { addDays, addMonths, addWeeks, endOfWeek, formatDate, startOfMonth, startOfWeek, subtractDays, subtractMonths, subtractWeeks, todayDate,} from "./utils/dates";
+import { addDays, addMonths, addWeeks, endOfWeek, formatDate, startOfMonth, startOfWeek, subtractDays, subtractMonths, subtractWeeks, todayDate, } from "./utils/dates";
 import { renderMonthView } from "./views/monthView";
+import { renderWeekView } from "./views/weekView";
 
 
 const schedulerState: SchedulerState = {
@@ -74,8 +75,10 @@ function renderCalendar(): void {
     const calendarContainer = document.querySelector("#calendar")
     if (calendarContainer) {
         calendarContainer.innerHTML = "";
-        calendarContainer.classList.add("month-grid");
+        calendarContainer.classList.remove("month-grid", "week-grid");
+
         if (schedulerState.currentView === "month") {
+            calendarContainer.classList.add("month-grid");
             renderMonthView(
                 (date: Date) => {
                     schedulerState.currentDate = date;
@@ -85,7 +88,19 @@ function renderCalendar(): void {
                 calendarContainer,
                 schedulerState.currentDate
             );
+        }
 
+        if (schedulerState.currentView === "week") {
+            calendarContainer.classList.add("week-grid")
+            renderWeekView(
+                (date: Date) => {
+                    schedulerState.currentDate = date;
+                    updateCalendarTitle();
+                    renderCalendar();
+                },
+                calendarContainer,
+                schedulerState.currentDate
+            );
         }
     }
 }
