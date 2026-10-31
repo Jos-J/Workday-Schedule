@@ -2,6 +2,9 @@
 
 header {
   display: flex;
+  padding: 10px 12px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 body {
@@ -53,13 +56,16 @@ textarea {
   color: white;
 }
 
-.nav-buttons button, .view-buttons button {
+.nav-buttons button,
+.view-buttons button {
   border-left: 1px solid black;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border: 1px solid black;
+  border-radius: 999px;
   background-color: #482348;
   color: #e7f3ef;
   padding: 10px;
+  size: 10px;
+  cursor: pointer;
 }
 
 
