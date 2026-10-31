@@ -8,7 +8,7 @@ export function renderMonthView(
     const calendarDates = datesForGrid(currentDate);
     const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     weekdays.forEach((day) => {
-
+// DOM manipulation (Document Object Model)
         const dayHeader = document.createElement("div")
         dayHeader.classList.add("week-day")
         dayHeader.textContent = (day)
