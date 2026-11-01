@@ -94,13 +94,16 @@ function renderCalendar(): void {
         if (schedulerState.currentView === "week") {
             calendarContainer.classList.add("week-grid")
             renderWeekView(
-                (date: Date) => {
+                (date: Date,) => {
                     schedulerState.currentDate = date;
                     updateCalendarTitle();
                     renderCalendar();
                 },
                 calendarContainer,
-                schedulerState.currentDate
+                schedulerState.currentDate,
+                ( date: Date, hour: number) => {
+                    console.log(date, hour);
+                }
             );
         }
 

@@ -7,11 +7,15 @@ export function renderMonthView(
 ): void {
     const calendarDates = datesForGrid(currentDate);
     const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    //const monthHeader = document.createElement("div")
+   // monthHeader.classList.add("month-header")
+
     weekdays.forEach((day) => {
 // DOM manipulation (Document Object Model)
         const dayHeader = document.createElement("div")
         dayHeader.classList.add("week-day")
         dayHeader.textContent = (day)
+        //monthHeader.appendChild(dayHeader);
         calendarContainer.appendChild(dayHeader)
 
     });
@@ -35,6 +39,7 @@ export function renderMonthView(
             onDateClick(date);
         });
 
+        //calendarContainer.appendChild(monthHeader);
         calendarContainer.appendChild(dayElement)
     });
 }

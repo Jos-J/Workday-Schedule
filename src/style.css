@@ -61,7 +61,7 @@ textarea {
   border-left: 1px solid black;
   border: 1px solid black;
   border-radius: 999px;
-  background-color: #482348;
+  background-color: #301830;
   color: #e7f3ef;
   padding: 10px;
   size: 10px;
@@ -75,14 +75,35 @@ textarea {
   color: purple;
 }
 
-.month-grid,
-.week-grid {
+.month-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
 }
+.week-grid {
+  display: block;
+  max-height: 600px;
+  overflow-y: auto;
+
+}
+.week-grid .time-row {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+}
+.week-header {
+display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  position: sticky;
+  top: 0;
+  background-color: #301830;
+  color: #ccc;
+}
+.month-header {
+  background-color: #23483c;
+}
+
 .week-date{
   border: #3b4d46;
-  padding: 100px;
+  padding: 10px;
   margin: 20px;
 }
 .calendar-day {
@@ -96,11 +117,12 @@ textarea {
   text-align: center;
 }
 .today {
-  background-color: #0f3319;
+  background-color: #3b4d46;
+  max-height: 200px;
   color: #ccc;
 }
 .selected-day {
-  border: 5px solid  lawngreen;
+  border: 5px solid  #658578;
 }
 .time-row {
   display: grid;
