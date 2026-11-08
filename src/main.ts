@@ -4,12 +4,13 @@ import { addDays, addMonths, addWeeks, endOfWeek, formatDate, startOfMonth, star
 import { renderMonthView } from "./views/monthView";
 import { renderWeekView } from "./views/weekView";
 import { renderDayView } from "./views/dayView";
+import { sampleEvents } from "./data/services";
 
 
 const schedulerState: SchedulerState = {
     currentDate: todayDate(),
     currentView: "month",
-    events: []
+    events: sampleEvents
 }
 
 
@@ -116,7 +117,8 @@ function renderCalendar(): void {
                         renderCalendar();
                     },
                     calendarContainer,
-                    schedulerState.currentDate
+                    schedulerState.currentDate,
+                    schedulerState.events
                 );
             
         }

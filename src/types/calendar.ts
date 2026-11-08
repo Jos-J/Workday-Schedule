@@ -1,18 +1,22 @@
 export type CalendarView = "day" | "week" | "month";
 
 export type CalendarEvent = {
-    id: number;
+    ID: number;
     title: string;
     customerName: string;
     Barber: string;
     date: Date;
-    startTime: string;
-    endTime: string;
+    startTime: Time;
+    endTime: Time;
     status: EventStatus;
     description?: string;
     location?: string;
     service: string;
 };
+export type Time = {
+    hour: number;
+    minute: number;
+}
 
 export type EventStatus = "scheduled" | "started" | "completed" |"cancelled";
 

@@ -1,10 +1,28 @@
-
+import type { CalendarEvent } from "../types/calendar"
 
 export function renderDayView(
    onDateClick: (date: Date) => void,
    calendarContainer: Element,
    currentDate: Date,
+   events: CalendarEvent[]
 ): void {
+   
+   const dayEvents = events.filter((event) => {
+      return (
+      event.date.getFullYear() === currentDate.getFullYear() &&
+      event.date.getMonth() === currentDate.getMonth() &&
+      event.date.getDate() === currentDate.getDate()
+      );
+   });
+
+    console.log("Day View Events:", dayEvents);
+
+
+    dayEvents.forEach((event) => {
+      console.log("appointments", event.startTime.hour, event.startTime.minute, event.endTime.hour, event.endTime.minute);
+    });
+
+
    const today = new Date()
 
    const isToday =
